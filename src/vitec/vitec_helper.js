@@ -1,5 +1,5 @@
 function generateCreateSearchProfilePayload(property_location, property_size, propery_type) {
-    if(!property_location || !property_size || !propery_type){
+    if (!property_location || !property_size || !propery_type) {
         return new Error("One of required fields are undefined.");
     }
 

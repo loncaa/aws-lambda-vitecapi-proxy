@@ -25,8 +25,8 @@ exports.handler = async (payload, _, __) => {
     const response = await VitecService.createContact({ ...payload });
     const { data } = response;
 
-    await VitecService.createSearchProfile(data, {...payload}).catch(error => console.log('error', error));
-    
+    await VitecService.createSearchProfile(data, { ...payload }).catch(error => console.log('error', error));
+
     return {
         statusCode: 200,
         headers: headers,

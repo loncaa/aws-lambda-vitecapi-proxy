@@ -7,6 +7,8 @@ const customerId = process.env['CUSTOMER_ID'];
 function createContact(payload) {
     payload["CustomerId"] = customerId;
 
+    console.log('createContact', payload);
+
     const url = "https://connect.maklare.vitec.net/Contacts/UpdatePerson";
 
     return axios.post(url, payload, {
@@ -18,6 +20,8 @@ function createContact(payload) {
 
 function createSearchProfile(contactId, payload) {
     const apiPayload = helper.generateCreateSearchProfilePayload(payload["property_location"], payload["property_size"], payload["propery_type"]);
+
+    console.log('createSearchProfile', apiPayload);
 
     const url = `https://connect.maklare.vitec.net/CRM/SearchProfile/${customerId}/${contactId}`;
 
