@@ -1,25 +1,25 @@
 const axios = require('axios');
 const helper = require('./vitec_helper');
 
-function createContact(payload) {
+const token = process.env['BASIC_TOKEN'];
+const customerId = process.env['CUSTOMER_ID'];
 
-    const apiPayload = helper.generateCreateContactPayload(payload)
+function createContact(payload) {
+    payload["CustomerId"] = customerId;
 
     const url = "https://connect.maklare.vitec.net/Contacts/UpdatePerson";
-    const token = process.env['BASIC_TOKEN'];
 
-    return axios.post(url, apiPayload, {
+    return axios.post(url, payload, {
         headers: {
             'Authorization': token
         }
     })
 }
 
-function createSearchProfile(customerId, contactId, payload) {
+function createSearchProfile(contactId, payload) {
     const apiPayload = helper.generateCreateSearchProfilePayload(payload["property_location"], payload["property_size"], payload["propery_type"]);
 
     const url = `https://connect.maklare.vitec.net/CRM/SearchProfile/${customerId}/${contactId}`;
-    const token = process.env['BASIC_TOKEN'];
 
     return axios.post(url, apiPayload, {
         headers: {

@@ -1,10 +1,3 @@
-function generateCreateContactPayload(payload) {
-    const customerId = process.env['CUSTOMER_ID'];
-    payload["CustomerId"] = customerId;
-
-    return payload;
-}
-
 function generateCreateSearchProfilePayload(property_location, property_size, propery_type) {
     if(!property_location || !property_size || !propery_type){
         return new Error("One of required fields are undefined.");
@@ -65,6 +58,5 @@ function generateCreateSearchProfilePayload(property_location, property_size, pr
 }
 
 module.exports = {
-    generateCreateContactPayload,
     generateCreateSearchProfilePayload
 }
